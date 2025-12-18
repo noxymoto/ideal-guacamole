@@ -1,227 +1,763 @@
 <!DOCTYPE html><html><head><title>shop.html</title><style>
-/* Base reset */
+/* Minimalist Clothing Theme - Square Layout */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
-/* Color palette: “Silent Echo” muted, ghostly tones */
+/* Color palette: Monochromatic minimalism */
 :root {
-  --bg: #0e0e0e;
-  --card-bg: #161616;
-  --accent: #c9ff23;
-  --accent-hover: #a7d41c;
-  --text: #dcdcdc;
-  --subtle: #999;
-  --border: #292929;
+  --bg: #ffffff;
+  --card-bg: #f9f9f9;
+  --accent: #000000;
+  --accent-hover: #333333;
+  --text: #1a1a1a;
+  --subtle: #777777;
+  --border: #e0e0e0;
+  --light-gray: #f5f5f5;
 }
 
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: "Inter", system-ui, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif;
   line-height: 1.6;
+  font-weight: 300;
 }
 
-/* Typography */
-h1, h2, h3 { font-weight: 600; letter-spacing: -.02em; }
-h1 { font-size: clamp(2.2rem, 5vw, 3.2rem); }
-h2 { font-size: clamp(1.5rem, 4vw, 2.2rem); }
-h3 { font-size: clamp(1.1rem, 3vw, 1.5rem); }
+/* Typography with geometric feel */
+h1, h2, h3, h4 { 
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+h1 { 
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  text-transform: uppercase;
+}
+h2 { 
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  margin-bottom: 2rem;
+}
+h3 { font-size: clamp(1.3rem, 3vw, 1.8rem); }
 
 /* Layout helpers */
-.wrapper { max-width: 1280px; margin: 0 auto; padding: 0 1rem; }
-.flex { display: flex; gap: 1.5rem; }
-.grid { display: grid; gap: 1.5rem; }
-
-/* Buttons */
-.btn {
-  display: inline-block;
-  padding: .75rem 1.5rem;
-  background: var(--accent);
-  color: #000;
-  font-weight: 600;
-  border-radius: 4px;
-margin: 8px;
-  text-decoration: none;
-  transition: .25s;
+.wrapper { 
+  max-width: 1280px; 
+  margin: 0 auto; 
+  padding: 0 2rem; 
 }
-.btn:hover { background: var(--accent-hover); }
+
+/* Buttons - Square style */
+.btn-square {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: var(--accent);
+  color: var(--bg);
+  font-weight: 400;
+  text-decoration: none;
+  border: none;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+.btn-square:hover { 
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+}
+
+.btn-square-outline {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+  font-weight: 400;
+  text-decoration: none;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  width: 100%;
+}
+.btn-square-outline:hover {
+  border-color: var(--accent);
+  background: var(--light-gray);
+}
 
 /* Header */
-header {
+.square-header {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(14,14,14,.9);
-  backdrop-filter: blur(6px);
+  background: var(--bg);
   border-bottom: 1px solid var(--border);
 }
 .header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 0;
+  padding: 1.5rem 0;
 }
-.logo { font-size: 1.4rem; font-weight: 700; letter-spacing: .05em; }
-nav ul { list-style: none; display: flex; gap: 1.5rem; }
+.logo { 
+  font-size: 1.5rem; 
+  font-weight: 300;
+  letter-spacing: 3px;
+}
+nav ul { 
+  list-style: none; 
+  display: flex; 
+  gap: 2rem; 
+  align-items: center;
+}
 nav a {
   color: var(--text);
   text-decoration: none;
-  font-weight: 500;
-  transition: color .2s;
+  font-weight: 300;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  transition: color 0.2s;
 }
-nav a:hover { color: var(--accent); }
+nav a:hover { color: var(--subtle); }
+.cart-icon {
+  position: relative;
+}
+.cart-count {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: var(--accent);
+  color: var(--bg);
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  font-size: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-/* Hero */
-.hero {
-  padding: 6rem 0 4rem;
+/* Hero - Square Grid Layout */
+.hero-square {
+  padding: 6rem 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  gap: 4rem;
   align-items: center;
-  gap: 3rem;
 }
-.hero h1 { margin-bottom: 1rem; }
-.hero p { margin-bottom: 2rem; color: var(--subtle); }
+.hero-left {
+  padding-right: 2rem;
+}
+.square-heading {
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+}
+.hero-subtitle {
+  font-size: 1.1rem;
+  color: var(--subtle);
+  margin-bottom: 2.5rem;
+  max-width: 400px;
+}
+.square-image-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.square-img {
+  aspect-ratio: 1/1;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--light-gray);
+}
 
-/* Product grid */
-.products {
-  padding: 4rem 0;
+/* Products Grid - Square Cards */
+.products-square {
+  padding: 5rem 0;
 }
-.products .grid {
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+.section-title {
+  text-align: center;
+  margin-bottom: 3rem;
 }
-.card {
-  background:(--card-bg);
+.square-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+.square-card {
+  background: var(--card-bg);
   border: 1px solid var(--border);
-  border-radius: 8px;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: transform .25s, box-shadow .25s;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.card:hover { transform: translateY(-6px); box-shadow: 0 12px 24px rgba(0,0,0,.4); }
-.card img { width: 100%; aspect-ratio: 4/5; object-fit: cover; }
-.card-body { padding: 1rem 1.25rem; flex: 1; display: flex; flex-direction: column; }
-.card-title { font-size: 1.1rem; margin-bottom: .5rem; }
-.card-price { margin-top: auto; font-weight: 700; color: var(--accent); }
+.square-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+.square-img-container {
+  aspect-ratio: 1/1;
+  overflow: hidden;
+}
+.square-product-img {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.5s ease;
+}
+.square-card:hover .square-product-img {
+  transform: scale(1.05);
+}
+.square-card-body {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.square-card-title {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 400;
+}
+.square-card-price {
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 300;
+}
+
+/* Features Grid */
+.features-square {
+  padding: 4rem 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.square-features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+}
+.square-feature {
+  text-align: center;
+  padding: 2rem;
+}
+.feature-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.square-feature h3 {
+  margin-bottom: 0.5rem;
+  font-weight: 400;
+}
+.square-feature p {
+  color: var(--subtle);
+  font-size: 0.9rem;
+}
 
 /* Footer */
-footer {
-  margin-top: 4rem;
-  padding: 3rem 0 2rem;
+.square-footer {
+  padding: 4rem 0 2rem;
+  background: var(--light-gray);
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+.footer-col ul {
+  list-style: none;
+}
+.footer-col li {
+  margin-bottom: 0.5rem;
+}
+.footer-col a {
+  color: var(--subtle);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+.footer-col a:hover {
+  color: var(--text);
+}
+.footer-input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  margin-bottom: 1rem;
+  font-family: inherit;
+}
+.footer-bottom {
+  padding-top: 2rem;
   border-top: 1px solid var(--border);
   text-align: center;
   color: var(--subtle);
-  font-size: .9rem;
+  font-size: 0.9rem;
+}
+
+/* Cart Sidebar */
+.cart-sidebar {
+  position: fixed;
+  top: 0;
+  right: -400px;
+  width: 350px;
+  height: 100vh;
+  background: var(--bg);
+  border-left: 1px solid var(--border);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  transition: right 0.3s ease;
+  z-index: 1000;
+}
+.cart-sidebar.active {
+  right: 0;
+}
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+.close-cart {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--subtle);
+}
+.cart-items {
+  flex: 1;
+  overflow-y: auto;
+}
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.cart-item-info h4 {
+  font-size: 0.9rem;
+  font-weight: 400;
+  margin-bottom: 0.25rem;
+}
+.cart-item-info p {
+  color: var(--subtle);
+  font-size: 0.9rem;
+}
+.remove-item {
+  background: none;
+  border: none;
+  color: var(--subtle);
+  cursor: pointer;
+}
+.cart-total {
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+.cart-total p {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
 }
 
 /* Mobile */
 @media (max-width: 768px) {
-  .header-inner { flex-wrap: wrap; }
-  nav { width: 100%; margin-top: .75rem; }
-  nav ul { justify-content: space-between; }
-  .hero { grid-template-columns: 1fr; }
-}</style></head><body><header>
+  .hero-square {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 3rem 0;
+  }
+  .header-inner {
+    flex-wrap: wrap;
+  }
+  nav ul {
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .square-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+  .cart-sidebar {
+    width: 100%;
+    right: -100%;
+  }
+}</style></head><body><header class="square-header">
   <div class="wrapper header-inner">
-    <div class="logo">ECHO.COMMERCE</div>
+    <div class="logo">MONOCHROME</div>
     <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
-        <li><a href="shop.html">Shop</a></li>
-        <li><a href="about.html">About</a></li>
+        <li><a href="shop.html">Collection</a></li>
+        <li><a href="about.html">Philosophy</a></li>
         <li><a href="contact.html">Contact</a></li>
+        <li><a href="#" class="cart-icon">🛒 <span class="cart-count">0</span></a></li>
       </ul>
     </nav>
   </div>
 </header>
 
-<section class="wrapper products" style="padding: 10px;">
-  <h1 style="border-radius: 4px; border: none; padding: 20px;">Catalog of Echoes</h1>
-  <div class="grid">
-    <article class="card">
-      <img src="https://ocs-pl.oktawave.com/v1/AUTH_630f86eaa3774cda8593b8a9710b1aa4/lte/alohafromdeer/2022/1109/20221109084410_BQuGdsFAhBCeyPJK_800x880.jpg" alt="Product" class="">
-      <div class="card-body">
-        <h3 class="card-title">Phantom Hood</h3>
-        <p>Soft brushed fleece, oversized fit. Limited run.</p>
-        <p class="card-price">$129</p>
-        <a href="#" class="btn">Add to Cart</a>
+<section class="wrapper shop-header">
+  <h1 class="square-heading">THE<br>COLLECTION</h1>
+  <p class="shop-subtitle">Every piece designed for longevity and versatility.</p>
+  
+  <div class="filter-square">
+    
+    
+    
+    
+    
+  </div>
+</section>
+
+<section class="wrapper products-square full-collection">
+  <div class="square-grid">
+    <article class="square-card">
+      <div class="square-img-container">
+        <div class="square-product-img" style="background-image: url('https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?w=800&amp;auto=format&amp;fit=crop&amp;q=60');"></div>
+      </div>
+      <div class="square-card-body">
+        <h3 class="square-card-title">Oversized Wool Blazer</h3>
+        <p class="square-card-price">$289</p>
+        <button class="btn-square-outline" data-product="1">ADD TO CART</button>
       </div>
     </article>
-    <article class="card">
-      <img src="https://ae01.alicdn.com/kf/HTB1G.EjX5DxK1Rjy1zcq6yGeXXau/Ghost-T-Shirt-Ghost-Band-Red-Cream-Design-100-Official-Ghost-B-C-Print-T-Shirt.jpg" alt="Product" class="">
-      <div class="card-body">
-        <h3 class="card-title">Ghost Tee</h3>
-        <p>100% organic cotton, glitch-dyed.</p>
-        <p class="card-price">$59</p>
-        <a href="#" class="btn">Add to Cart</a>
+    <article class="square-card">
+      <div class="square-img-container">
+        <div class="square-product-img" style="background-image: url('https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=800&amp;auto=format&amp;fit=crop&amp;q=60');"></div>
+      </div>
+      <div class="square-card-body">
+        <h3 class="square-card-title">Straight-Leg Trousers</h3>
+        <p class="square-card-price">$159</p>
+        <button class="btn-square-outline" data-product="2">ADD TO CART</button>
       </div>
     </article>
-    <article class="card">
-      <img src="https://nz.coach.com/dw/image/v2/BDFS_PRD/on/demandware.static/-/Sites-coach-master-catalog/default/dw42430cbf/images/CY772/C_CY772CHR_1.jpg?sw=1000&amp;sh=1000" alt="Product" class="">
-      <div class="card-body">
-        <h3 class="card-title">Null Tote</h3>
-        <p>Recycled nylon, fits a 15" laptop.</p>
-        <p class="card-price">$89</p>
-        <a href="#" class="btn">Add to Cart</a>
+    <article class="square-card">
+      <div class="square-img-container">
+        <div class="square-product-img" style="background-image: url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&amp;auto=format&amp;fit=crop&amp;q=60');"></div>
+      </div>
+      <div class="square-card-body">
+        <h3 class="square-card-title">Cashmere Crewneck</h3>
+        <p class="square-card-price">$199</p>
+        <button class="btn-square-outline" data-product="3">ADD TO CART</button>
       </div>
     </article>
-    <article class="card">
-      <img src="https://media.cntraveler.com/photos/5671ba031de3008f06a41bdf/master/w_1200,c_limit/rains-jackets.jpg?mbid=social_retweet" alt="Product" class="">
-      <div class="card-body">
-        <h3 class="card-title">Silence Cap</h3>
-        <p>Embroidered sigil on recycled twill.</p>
-        <p class="card-price">$59</p>
-        <a href="#" class="btn">Add to Cart</a>
+    <article class="square-card">
+      <div class="square-img-container">
+        <div class="square-product-img" style="background-image: url('https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=800&amp;auto=format&amp;fit=crop&amp;q=60');"></div>
+      </div>
+      <div class="square-card-body">
+        <h3 class="square-card-title">Silk Slip Dress</h3>
+        <p class="square-card-price">$239</p>
+        <button class="btn-square-outline" data-product="4">ADD TO CART</button>
       </div>
     </article>
-    <article class="card">
-      <img src="https://media.cntraveler.com/photos/5671ba031de3008f06a41bdf/master/w_1200,c_limit/rains-jackets.jpg?mbid=social_retweet" alt="Product" class="">
-      <div class="card-body">
-        <h3 class="card-title">Void Shell</h3>
-        <p>Water-resistant ripstop, packable.</p>
-        <p class="card-price">$189</p>
-        <a href="#" class="btn">Add to Cart</a>
+    <article class="square-card">
+      <div class="square-img-container">
+        <div class="square-product-img" style="background-image: url('https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=800&amp;auto=format&amp;fit=crop&amp;q=60');"></div>
+      </div>
+      <div class="square-card-body">
+        <h3 class="square-card-title">Linen Button-Up</h3>
+        <p class="square-card-price">$129</p>
+        <button class="btn-square-outline" data-product="5">ADD TO CART</button>
       </div>
     </article>
-    <article class="card">
-      <img src="https://tse4.mm.bing.net/th/id/OIP.658iIdj3O6RwpOMRFxcTDgHaFb?cb=ucfimg2&amp;ucfimg=1&amp;rs=1&amp;pid=ImgDetMain&amp;o=7&amp;rm=3" alt="Product" class="">
-      <div class="card-body">
-        <h3 class="card-title">Echo Pack</h3>
-        <p>25L capacity, hidden laptop sleeve.</p>
-        <p class="card-price">$149</p>
-        <a href="#" class="btn">Add to Cart</a>
+    <article class="square-card">
+      <div class="square-img-container">
+        <div class="square-product-img" style="background-image: url('https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=800&amp;auto=format&amp;fit=crop&amp;q=60');"></div>
+      </div>
+      <div class="square-card-body">
+        <h3 class="square-card-title">Wide-Leg Jeans</h3>
+        <p class="square-card-price">$179</p>
+        <button class="btn-square-outline" data-product="6">ADD TO CART</button>
+      </div>
+    </article>
+    <article class="square-card">
+      <div class="square-img-container">
+        <div class="square-product-img" style="background-image: url('https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=800&amp;auto=format&amp;fit=crop&amp;q=60');"></div>
+      </div>
+      <div class="square-card-body">
+        <h3 class="square-card-title">Cotton Turtleneck</h3>
+        <p class="square-card-price">$89</p>
+        <button class="btn-square-outline" data-product="7">ADD TO CART</button>
+      </div>
+    </article>
+    <article class="square-card">
+      <div class="square-img-container">
+        <div class="square-product-img" style="background-image: url('https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=800&amp;auto=format&amp;fit=crop&amp;q=60');"></div>
+      </div>
+      <div class="square-card-body">
+        <h3 class="square-card-title">Leather Tote Bag</h3>
+        <p class="square-card-price">$349</p>
+        <button class="btn-square-outline" data-product="8">ADD TO CART</button>
       </div>
     </article>
   </div>
 </section>
 
-<footer>
+<footer class="square-footer">
   <div class="wrapper">
-    <p>© <span id="year">2025</span> Silence//Echo. All glitches reserved.</p>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="logo">MONOCHROME</div>
+        <p>Minimalist essentials for the intentional wardrobe.</p>
+      </div>
+      <div class="footer-col">
+        <h4 class="" style="padding: 10px;">Collections</h4>
+        <ul>
+          <li><a href="#">Spring 2025</a></li>
+          <li><a href="#">Core Essentials</a></li>
+          <li><a href="#">Archive</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 class="" style="padding: 10px;">Company</h4>
+        <ul>
+          <li><a href="about.html">Our Story</a></li>
+          <li><a href="#">Sustainability</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 style="padding: 10px;">Newsletter</h4>
+        <input type="email" placeholder="Your email" class="footer-input">
+        <button class="btn-square-outline">Subscribe</button>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="year">2025</span> MONOCHROME. All rights reserved.</p>
+    </div>
   </div>
 </footer>
 
+<div class="cart-sidebar">
+  <div class="cart-header">
+    <h3>Your Cart</h3>
+    <button class="close-cart">✕</button>
+  </div>
+  <div class="cart-items"></div>
+  <div class="cart-total">
+    <p>Total: $<span class="total-price">0</span></p>
+    <button class="btn-square">CHECKOUT</button>
+  </div>
+</div>
+
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+  
+  // Filter functionality
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+  
+  // Cart functionality (same as index.html)
+  let cart = [];
+  const cartSidebar = document.querySelector('.cart-sidebar');
+  const cartItems = document.querySelector('.cart-items');
+  const cartCount = document.querySelector('.cart-count');
+  const totalPrice = document.querySelector('.total-price');
+  
+  document.querySelectorAll('.cart-icon').forEach(icon => {
+    icon.addEventListener('click', (e) => {
+      e.preventDefault();
+      cartSidebar.classList.add('active');
+    });
+  });
+  
+  document.querySelector('.close-cart').addEventListener('click', () => {
+    cartSidebar.classList.remove('active');
+  });
+  
+  document.querySelectorAll('.btn-square-outline').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const productId = e.target.getAttribute('data-product');
+      const productName = e.target.closest('.square-card').querySelector('.square-card-title').textContent;
+      const priceText = e.target.closest('.square-card').querySelector('.square-card-price').textContent;
+      const price = parseInt(priceText.replace('$', ''));
+      
+      cart.push({ id: productId, name: productName, price: price });
+      updateCart();
+      
+      e.target.textContent = 'ADDED ✓';
+      e.target.style.backgroundColor = '#000';
+      e.target.style.color = '#fff';
+      setTimeout(() => {
+        e.target.textContent = 'ADD TO CART';
+        e.target.style.backgroundColor = '';
+        e.target.style.color = '';
+      }, 1500);
+    });
+  });
+  
+  function updateCart() {
+    cartCount.textContent = cart.length;
+    let total = cart.reduce((sum, item) => sum + item.price, 0);
+    totalPrice.textContent = total;
+    
+    cartItems.innerHTML = '';
+    cart.forEach(item => {
+      const itemEl = document.createElement('div');
+      itemEl.className = 'cart-item';
+      itemEl.innerHTML = `
+        <div class="cart-item-info">
+          <h4>${item.name}</h4>
+          <p>$${item.price}</p>
+        </div>
+        <button class="remove-item" data-id="${item.id}">✕</button>
+      `;
+      cartItems.appendChild(itemEl);
+    });
+    
+    document.querySelectorAll('.remove-item').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const id = e.target.getAttribute('data-id');
+        cart = cart.filter(item => item.id !== id);
+        updateCart();
+      });
+    });
+  }
 </script>
-        
+        <script>
+            // GLOBAL JS INJECTION
+            
+            
+            // INLINE JS EXECUTION
+            document.addEventListener('DOMContentLoaded', function() {
+                // Execute inline custom JS for each element
+                document.querySelectorAll('[data-custom-js]').forEach(function(el) {
+                    try {
+                        const code = el.getAttribute('data-custom-js');
+                        if (code) {
+                            const func = new Function('el', code);
+                            func(el);
+                        }
+                    } catch(err) {
+                        console.warn('Custom JS Error for element:', el.id, err);
+                    }
+                });
+            });
+        </script>
     
-        
     
-        
+
+        <script>
+            // GLOBAL JS INJECTION
+            
+            
+            // INLINE JS EXECUTION
+            document.addEventListener('DOMContentLoaded', function() {
+                // Execute inline custom JS for each element
+                document.querySelectorAll('[data-custom-js]').forEach(function(el) {
+                    try {
+                        const code = el.getAttribute('data-custom-js');
+                        if (code) {
+                            const func = new Function('el', code);
+                            func(el);
+                        }
+                    } catch(err) {
+                        console.warn('Custom JS Error for element:', el.id, err);
+                    }
+                });
+            });
+        </script>
     
-        
     
-        
+
+        <script>
+            // GLOBAL JS INJECTION
+            
+            
+            // INLINE JS EXECUTION
+            document.addEventListener('DOMContentLoaded', function() {
+                // Execute inline custom JS for each element
+                document.querySelectorAll('[data-custom-js]').forEach(function(el) {
+                    try {
+                        const code = el.getAttribute('data-custom-js');
+                        if (code) {
+                            const func = new Function('el', code);
+                            func(el);
+                        }
+                    } catch(err) {
+                        console.warn('Custom JS Error for element:', el.id, err);
+                    }
+                });
+            });
+        </script>
     
-        
     
-        
+
+        <script>
+            // GLOBAL JS INJECTION
+            
+            
+            // INLINE JS EXECUTION
+            document.addEventListener('DOMContentLoaded', function() {
+                // Execute inline custom JS for each element
+                document.querySelectorAll('[data-custom-js]').forEach(function(el) {
+                    try {
+                        const code = el.getAttribute('data-custom-js');
+                        if (code) {
+                            const func = new Function('el', code);
+                            func(el);
+                        }
+                    } catch(err) {
+                        console.warn('Custom JS Error for element:', el.id, err);
+                    }
+                });
+            });
+        </script>
     
-        
     
-        
+
+        <script>
+            // GLOBAL JS INJECTION
+            
+            
+            // INLINE JS EXECUTION
+            document.addEventListener('DOMContentLoaded', function() {
+                // Execute inline custom JS for each element
+                document.querySelectorAll('[data-custom-js]').forEach(function(el) {
+                    try {
+                        const code = el.getAttribute('data-custom-js');
+                        if (code) {
+                            const func = new Function('el', code);
+                            func(el);
+                        }
+                    } catch(err) {
+                        console.warn('Custom JS Error for element:', el.id, err);
+                    }
+                });
+            });
+        </script>
     
-        
     
-        
-    </body></html>
+
+        <script>
+            // GLOBAL JS INJECTION
+            
+            
+            // INLINE JS EXECUTION
+            document.addEventListener('DOMContentLoaded', function() {
+                // Execute inline custom JS for each element
+                document.querySelectorAll('[data-custom-js]').forEach(function(el) {
+                    try {
+                        const code = el.getAttribute('data-custom-js');
+                        if (code) {
+                            const func = new Function('el', code);
+                            func(el);
+                        }
+                    } catch(err) {
+                        console.warn('Custom JS Error for element:', el.id, err);
+                    }
+                });
+            });
+        </script>
+    
+    
+</body></html>
