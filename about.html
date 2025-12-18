@@ -1,171 +1,385 @@
 <!DOCTYPE html><html><head><title>about.html</title><style>
-/* Base reset */
+/* About page specific styles */
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
 
-/* Color palette: “Silent Echo” muted, ghostly tones */
 :root {
-  --bg: #0e0e0e;
-  --card-bg: #161616;
-  --accent: #c9ff23;
-  --accent-hover: #a7d41c;
-  --text: #dcdcdc;
-  --subtle: #999;
-  --border: #292929;
+  --bg: #ffffff;
+  --card-bg: #f9f9f9;
+  --accent: #000000;
+  --accent-hover: #333333;
+  --text: #1a1a1a;
+  --subtle: #777777;
+  --border: #e0e0e0;
+  --light-gray: #f5f5f5;
 }
 
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: "Inter", system-ui, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif;
   line-height: 1.6;
+  font-weight: 300;
 }
 
-/* Typography */
-h1, h2, h3 { font-weight: 600; letter-spacing: -.02em; }
-h1 { font-size: clamp(2.2rem, 5vw, 3.2rem); }
-h2 { font-size: clamp(1.5rem, 4vw, 2.2rem); }
-h3 { font-size: clamp(1.1rem, 3vw, 1.5rem); }
-
-/* Layout helpers */
-.wrapper { max-width: 1280px; margin: 0 auto; padding: 0 1rem; }
-.flex { display: flex; gap: 1.5rem; }
-.grid { display: grid; gap: 1.5rem; }
-
-/* Buttons */
-.btn {
-  display: inline-block;
-  padding: .75rem 1.5rem;
-  background: var(--accent);
-  color: #000;
-  font-weight: 600;
-  border-radius: 4px;
-  text-decoration: none;
-  transition: .25s;
+h1, h2, h3, h4 { 
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
 }
-.btn:hover { background: var(--accent-hover); }
 
-/* Header */
-header {
+.wrapper { 
+  max-width: 1280px; 
+  margin: 0 auto; 
+  padding: 0 2rem; 
+}
+
+.square-header {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(14,14,14,.9);
-  backdrop-filter: blur(6px);
+  background: var(--bg);
   border-bottom: 1px solid var(--border);
 }
+
 .header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 0;
+  padding: 1.5rem 0;
 }
-.logo { font-size: 1.4rem; font-weight: 700; letter-spacing: .05em; }
-nav ul { list-style: none; display: flex; gap: 1.5rem; }
+
+.logo { 
+  font-size: 1.5rem; 
+  font-weight: 300;
+  letter-spacing: 3px;
+}
+
+nav ul { 
+  list-style: none; 
+  display: flex; 
+  gap: 2rem; 
+  align-items: center;
+}
+
 nav a {
   color: var(--text);
   text-decoration: none;
-  font-weight: 500;
-  transition: color .2s;
+  font-weight: 300;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  transition: color 0.2s;
 }
-nav a:hover { color: var(--accent); }
 
-/* Hero */
-.hero {
-  padding: 6rem 0 4rem;
+.cart-count {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: var(--accent);
+  color: var(--bg);
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  font-size: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-square {
+  padding: 4rem 0 6rem;
+}
+
+.about-hero {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.square-heading {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.about-subtitle {
+  font-size: 1.1rem;
+  color: var(--subtle);
+}
+
+.about-section {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  gap: 4rem;
   align-items: center;
-  gap: 3rem;
+  margin-bottom: 6rem;
 }
-.hero h1 { margin-bottom: 1rem; }
-.hero p { margin-bottom: 2rem; color: var(--subtle); }
 
-/* Product grid */
-.products {
-  padding: 4rem 0;
+.about-section.reverse {
+  direction: rtl;
 }
-.products .grid {
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+
+.about-section.reverse .about-text {
+  direction: ltr;
 }
-.card {
-  background:(--card-bg);
+
+.about-img {
+  aspect-ratio: 1/1;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--light-gray);
+}
+
+.about-text {
+  padding: 2rem;
+}
+
+.about-text h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  font-weight: 300;
+}
+
+.about-text p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--subtle);
+}
+
+.about-values {
+  margin-top: 6rem;
+}
+
+.about-values h2 {
+  text-align: center;
+  margin-bottom: 3rem;
+  font-size: 2.5rem;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.value-item {
+  text-align: center;
+  padding: 2rem;
   border: 1px solid var(--border);
-  border-radius: 8px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  transition: transform .25s, box-shadow .25s;
 }
-.card:hover { transform: translateY(-6px); box-shadow: 0 12px 24px rgba(0,0,0,.4); }
-.card img { width: 100%; aspect-ratio: 4/5; object-fit: cover; }
-.card-body { padding: 1rem 1.25rem; flex: 1; display: flex; flex-direction: column; }
-.card-title { font-size: 1.1rem; margin-bottom: .5rem; }
-.card-price { margin-top: auto; font-weight: 700; color: var(--accent); }
 
-/* Footer */
-footer {
-  margin-top: 4rem;
-  padding: 3rem 0 2rem;
+.value-item h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  font-weight: 400;
+}
+
+.value-item p {
+  color: var(--subtle);
+  font-size: 0.9rem;
+}
+
+.square-footer {
+  padding: 4rem 0 2rem;
+  background: var(--light-gray);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.footer-bottom {
+  padding-top: 2rem;
   border-top: 1px solid var(--border);
   text-align: center;
   color: var(--subtle);
-  font-size: .9rem;
+  font-size: 0.9rem;
 }
 
-/* Mobile */
 @media (max-width: 768px) {
-  .header-inner { flex-wrap: wrap; }
-  nav { width: 100%; margin-top: .75rem; }
-  nav ul { justify-content: space-between; }
-  .hero { grid-template-columns: 1fr; }
-}</style></head><body><header>
+  .about-section {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .about-section.reverse {
+    direction: ltr;
+  }
+}</style></head><body><header class="square-header">
   <div class="wrapper header-inner">
-    <div class="logo">ECHO.COMMERCE</div>
+    <div class="logo">MONOCHROME</div>
     <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
-        <li><a href="shop.html">Shop</a></li>
-        <li><a href="about.html">About</a></li>
+        <li><a href="shop.html">Collection</a></li>
+        <li><a href="about.html">Philosophy</a></li>
         <li><a href="contact.html">Contact</a></li>
+        <li><a href="#" class="cart-icon">🛒 <span class="cart-count">0</span></a></li>
       </ul>
     </nav>
   </div>
 </header>
 
-<section class="wrapper" style="padding:4rem 0;max-width:720px;">
-  <h1>About the Echo</h1>
-  <p style="margin: 1.5rem 0px; color: var(--subtle);">
-    Somewhere between the deletion of a file and the next software update, a seam opened. We listened. We stitched the silence into fabric.
-  </p>
-  <p>
-    Silence//Echo is a small collective designing wearable artifacts from digital residue. Every piece is produced in limited runs, using recycled or low-impact materials, and ships in compostable packaging.
-  </p>
-  <p>
-    Our garments are meant to carry the memory of obsolete code—proof that even erased data leaves a shadow.
-  </p>
+<section class="wrapper about-square">
+  <div class="about-hero">
+    <h1 class="square-heading">OUR<br>PHILOSOPHY</h1>
+    <p class="about-subtitle">Less noise, more meaning.</p>
+  </div>
+  
+  <div class="about-content">
+    <div class="about-section">
+      <div class="about-img" style="background-image: url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&amp;auto=format&amp;fit=crop&amp;q=60');"></div>
+      <div class="about-text">
+        <h2>Intentional Design</h2>
+        <p>Every piece begins with a question: is this necessary? We strip away excess, focusing on clean lines, natural materials, and timeless silhouettes. Our garments are designed to be worn for years, not seasons.</p>
+      </div>
+    </div>
+    
+    <div class="about-section reverse">
+      <div class="about-text">
+        <h2>Ethical Production</h2>
+        <p>We partner with family-run workshops that share our values. Fair wages, safe working conditions, and small-batch production ensure quality and accountability. Each piece is crafted with respect for both people and planet.</p>
+      </div>
+      <div class="about-img" style="background-image: url('https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=800&amp;auto=format&amp;fit=crop&amp;q=60');"></div>
+    </div>
+    
+    <div class="about-section">
+      <div class="about-img" style="background-image: url('https://images.unsplash.com/photo-1520006403909-838d6b92c22e?w=800&amp;auto=format&amp;fit=crop&amp;q=60');"></div>
+      <div class="about-text">
+        <h2>Sustainable Materials</h2>
+        <p>We source organic cotton, recycled wool, and linen from certified suppliers. Our packaging is 100% recyclable, and we offset all carbon emissions from shipping. Sustainability isn't a trend—it's our foundation.</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="about-values">
+    <h2>Our Values</h2>
+    <div class="values-grid">
+      <div class="value-item">
+        <h3>Quality Over Quantity</h3>
+        <p>Fewer, better pieces that last</p>
+      </div>
+      <div class="value-item">
+        <h3>Transparency</h3>
+        <p>Full supply chain visibility</p>
+      </div>
+      <div class="value-item">
+        <h3>Minimal Waste</h3>
+        <p>Zero-waste cutting techniques</p>
+      </div>
+      <div class="value-item">
+        <h3>Timelessness</h3>
+        <p>Designs that transcend seasons</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<footer>
+<footer class="square-footer">
   <div class="wrapper">
-    <p>© <span id="year">2025</span> Silence//Echo. All glitches reserved.</p>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="logo">MONOCHROME</div>
+        <p>Minimalist essentials for the intentional wardrobe.</p>
+      </div>
+      <div class="footer-col">
+        <h4 class="" style="padding: 10px;">Collections</h4>
+        <ul>
+          <li><a href="#">Spring 2025</a></li>
+          <li><a href="#">Core Essentials</a></li>
+          <li><a href="#">Archive</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 class="" style="padding: 10px;">Company</h4>
+        <ul>
+          <li><a href="about.html">Our Story</a></li>
+          <li><a href="#">Sustainability</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        
+        
+        
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="year">2025</span> MONOCHROME. All rights reserved.</p>
+    </div>
   </div>
 </footer>
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 </script>
-        
+        <script>
+            // GLOBAL JS INJECTION
+            
+            
+            // INLINE JS EXECUTION
+            document.addEventListener('DOMContentLoaded', function() {
+                // Execute inline custom JS for each element
+                document.querySelectorAll('[data-custom-js]').forEach(function(el) {
+                    try {
+                        const code = el.getAttribute('data-custom-js');
+                        if (code) {
+                            const func = new Function('el', code);
+                            func(el);
+                        }
+                    } catch(err) {
+                        console.warn('Custom JS Error for element:', el.id, err);
+                    }
+                });
+            });
+        </script>
     
-        
     
-        
+
+        <script>
+            // GLOBAL JS INJECTION
+            
+            
+            // INLINE JS EXECUTION
+            document.addEventListener('DOMContentLoaded', function() {
+                // Execute inline custom JS for each element
+                document.querySelectorAll('[data-custom-js]').forEach(function(el) {
+                    try {
+                        const code = el.getAttribute('data-custom-js');
+                        if (code) {
+                            const func = new Function('el', code);
+                            func(el);
+                        }
+                    } catch(err) {
+                        console.warn('Custom JS Error for element:', el.id, err);
+                    }
+                });
+            });
+        </script>
     
-        
     
-        
+
+        <script>
+            // GLOBAL JS INJECTION
+            
+            
+            // INLINE JS EXECUTION
+            document.addEventListener('DOMContentLoaded', function() {
+                // Execute inline custom JS for each element
+                document.querySelectorAll('[data-custom-js]').forEach(function(el) {
+                    try {
+                        const code = el.getAttribute('data-custom-js');
+                        if (code) {
+                            const func = new Function('el', code);
+                            func(el);
+                        }
+                    } catch(err) {
+                        console.warn('Custom JS Error for element:', el.id, err);
+                    }
+                });
+            });
+        </script>
     
-        
     
-        
-    </body></html>
+</body></html>
