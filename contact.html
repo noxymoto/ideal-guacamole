@@ -1,168 +1,432 @@
 <!DOCTYPE html><html><head><title>contact.html</title><style>
-/* Base reset */
+/* Contact page specific styles */
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
 
-/* Color palette: “Silent Echo” muted, ghostly tones */
 :root {
-  --bg: #0e0e0e;
-  --card-bg: #161616;
-  --accent: #c9ff23;
-  --accent-hover: #a7d41c;
-  --text: #dcdcdc;
-  --subtle: #999;
-  --border: #292929;
+  --bg: #ffffff;
+  --card-bg: #f9f9f9;
+  --accent: #000000;
+  --accent-hover: #333333;
+  --text: #1a1a1a;
+  --subtle: #777777;
+  --border: #e0e0e0;
+  --light-gray: #f5f5f5;
 }
 
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: "Inter", system-ui, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif;
   line-height: 1.6;
+  font-weight: 300;
 }
 
-/* Typography */
-h1, h2, h3 { font-weight: 600; letter-spacing: -.02em; }
-h1 { font-size: clamp(2.2rem, 5vw, 3.2rem); }
-h2 { font-size: clamp(1.5rem, 4vw, 2.2rem); }
-h3 { font-size: clamp(1.1rem, 3vw, 1.5rem); }
-
-/* Layout helpers */
-.wrapper { max-width: 1280px; margin: 0 auto; padding: 0 1rem; }
-.flex { display: flex; gap: 1.5rem; }
-.grid { display: grid; gap: 1.5rem; }
-
-/* Buttons */
-.btn {
-  display: inline-block;
-  padding: .75rem 1.5rem;
-  background: var(--accent);
-  color: #000;
-  font-weight: 600;
-  border-radius: 4px;
-  text-decoration: none;
-  transition: .25s;
+h1, h2, h3, h4 { 
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
 }
-.btn:hover { background: var(--accent-hover); }
 
-/* Header */
-header {
+.wrapper { 
+  max-width: 1280px; 
+  margin: 0 auto; 
+  padding: 0 2rem; 
+}
+
+.square-header {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(14,14,14,.9);
-  backdrop-filter: blur(6px);
+  background: var(--bg);
   border-bottom: 1px solid var(--border);
 }
+
 .header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 0;
+  padding: 1.5rem 0;
 }
-.logo { font-size: 1.4rem; font-weight: 700; letter-spacing: .05em; }
-nav ul { list-style: none; display: flex; gap: 1.5rem; }
+
+.logo { 
+  font-size: 1.5rem; 
+  font-weight: 300;
+  letter-spacing: 3px;
+}
+
+nav ul { 
+  list-style: none; 
+  display: flex; 
+  gap: 2rem; 
+  align-items: center;
+}
+
 nav a {
   color: var(--text);
   text-decoration: none;
-  font-weight: 500;
-  transition: color .2s;
+  font-weight: 300;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  transition: color 0.2s;
 }
-nav a:hover { color: var(--accent); }
 
-/* Hero */
-.hero {
-  padding: 6rem 0 4rem;
+.cart-count {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: var(--accent);
+  color: var(--bg);
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  font-size: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-square {
+  padding: 4rem 0 6rem;
+}
+
+.contact-hero {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.square-heading {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.contact-subtitle {
+  font-size: 1.1rem;
+  color: var(--subtle);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  align-items: center;
-  gap: 3rem;
+  gap: 4rem;
+  margin-bottom: 6rem;
 }
-.hero h1 { margin-bottom: 1rem; }
-.hero p { margin-bottom: 2rem; color: var(--subtle); }
 
-/* Product grid */
-.products {
-  padding: 4rem 0;
+.contact-form-container h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  font-weight: 300;
 }
-.products .grid {
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+
+.contact-form {
+  display: grid;
+  gap: 1.5rem;
 }
-.card {
-  background:(--card-bg);
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 1rem;
   border: 1px solid var(--border);
-  border-radius: 8px;
-  overflow: hidden;
+  background: var(--bg);
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: var(--text);
+  transition: border-color 0.25s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.btn-square {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: var(--accent);
+  color: var(--bg);
+  font-weight: 400;
+  text-decoration: none;
+  border: none;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.contact-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.info-square {
+  padding: 1.5rem;
+  border: 1px solid var(--border);
   display: flex;
   flex-direction: column;
-  transition: transform .25s, box-shadow .25s;
+  justify-content: center;
 }
-.card:hover { transform: translateY(-6px); box-shadow: 0 12px 24px rgba(0,0,0,.4); }
-.card img { width: 100%; aspect-ratio: 4/5; object-fit: cover; }
-.card-body { padding: 1rem 1.25rem; flex: 1; display: flex; flex-direction: column; }
-.card-title { font-size: 1.1rem; margin-bottom: .5rem; }
-.card-price { margin-top: auto; font-weight: 700; color: var(--accent); }
 
-/* Footer */
-footer {
-  margin-top: 4rem;
-  padding: 3rem 0 2rem;
+.info-square h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  font-weight: 400;
+}
+
+.info-square p {
+  color: var(--subtle);
+  line-height: 1.7;
+}
+
+.info-square a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.info-square a:hover {
+  text-decoration: underline;
+}
+
+.contact-map {
+  text-align: center;
+}
+
+.map-placeholder {
+  display: inline-block;
+  max-width: 800px;
+}
+
+.map-square {
+  aspect-ratio: 2/1;
+  background: var(--light-gray);
+  border: 1px solid var(--border);
+  margin-bottom: 1rem;
+}
+
+.map-placeholder p {
+  color: var(--subtle);
+  font-size: 0.9rem;
+}
+
+.square-footer {
+  padding: 4rem 0 2rem;
+  background: var(--light-gray);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.footer-bottom {
+  padding-top: 2rem;
   border-top: 1px solid var(--border);
   text-align: center;
   color: var(--subtle);
-  font-size: .9rem;
+  font-size: 0.9rem;
 }
 
-/* Mobile */
 @media (max-width: 768px) {
-  .header-inner { flex-wrap: wrap; }
-  nav { width: 100%; margin-top: .75rem; }
-  nav ul { justify-content: space-between; }
-  .hero { grid-template-columns: 1fr; }
-}</style></head><body><header>
+  .contact-content {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  
+  .contact-info {
+    grid-template-columns: 1fr;
+  }
+}</style></head><body><header class="square-header">
   <div class="wrapper header-inner">
-    <div class="logo">ECHO.COMMERCE</div>
+    <div class="logo">MONOCHROME</div>
     <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
-        <li><a href="shop.html">Shop</a></li>
-        <li><a href="about.html">About</a></li>
+        <li><a href="shop.html">Collection</a></li>
+        <li><a href="about.html">Philosophy</a></li>
         <li><a href="contact.html">Contact</a></li>
+        <li><a href="#" class="cart-icon">🛒 <span class="cart-count">0</span></a></li>
       </ul>
     </nav>
   </div>
 </header>
 
-<section class="wrapper" style="padding:4rem 0;max-width:720px;">
-  <h1>Contact</h1>
-  <p style="margin: 1.5rem 0px; color: var(--subtle);">Send us a signal. We’ll echo back.</p>
-
-  <form action="#" method="post" style="display:grid;gap:1.2rem;margin-top:2rem;">
-    <input type="text" name="name" placeholder="Name" required="" style="padding:.75rem;background:var(--card-bg);border:1px solid var(--border);color:var(--text);border-radius:4px;">
-    <input type="email" name="email" placeholder="Email" required="" style="padding:.75rem;background:var(--card-bg);border:1px solid var(--border);color:var(--text);border-radius:4px;">
-    <textarea name="message" rows="5" placeholder="Message" required="" style="padding:.75rem;background:var(--card-bg);border:1px solid var(--border);color:var(--text);border-radius:4px;resize:vertical;"></textarea>
-    <button class="btn" type="submit">Send</button>
-  </form>
-
-  <p style="margin-top: 3rem;">
-    Or reach us directly at <a href="mailto:echo@silenceecho.com" style="color: var(--accent);">echo@silenceecho.com</a>
-  </p>
+<section class="wrapper contact-square">
+  <div class="contact-hero">
+    <h1 class="square-heading">CONTACT<br>US</h1>
+    <p class="contact-subtitle">We're here to help with any questions about our products or philosophy.</p>
+  </div>
+  
+  <div class="contact-content">
+    <div class="contact-form-container">
+      <h2>Send a Message</h2>
+      <form class="contact-form" id="contactForm">
+        <div class="form-group">
+          <input type="text" name="name" placeholder="Your Name" required="">
+        </div>
+        <div class="form-group">
+          <input type="email" name="email" placeholder="Your Email" required="">
+        </div>
+        <div class="form-group">
+          <select name="subject">
+            <option value="">Select Subject</option>
+            <option value="order">Order Inquiry</option>
+            <option value="sizing">Sizing Question</option>
+            <option value="sustainability">Sustainability</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <textarea name="message" rows="6" placeholder="Your Message" required=""></textarea>
+        </div>
+        <button type="submit" class="btn-square">SEND MESSAGE</button>
+      </form>
+    </div>
+    
+    <div class="contact-info">
+      <div class="info-square">
+        <h3>Visit Our Studio</h3>
+        <p>123 Minimal Street<br>New York, NY 10001<br>By appointment only</p>
+      </div>
+      
+      <div class="info-square">
+        <h3>Email Us</h3>
+        <p><a href="mailto:hello@monochrome.com">hello@monochrome.com</a><br>Response within 24 hours</p>
+      </div>
+      
+      <div class="info-square">
+        <h3>Customer Care</h3>
+        <p>Mon-Fri: 9am-6pm EST<br>+1 (555) 123-4567<br><a href="#">FAQ Page</a></p>
+      </div>
+      
+      <div class="info-square">
+        <h3>Press &amp; Collaborations</h3>
+        <p><a href="mailto:press@monochrome.com">press@monochrome.com</a><br>For media inquiries only</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="contact-map">
+    <div class="map-placeholder">
+      
+      
+    </div>
+  </div>
 </section>
 
-<footer>
+<footer class="square-footer">
   <div class="wrapper">
-    <p>© <span id="year">2025</span> Silence//Echo. All glitches reserved.</p>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="logo">MONOCHROME</div>
+        <p>Minimalist essentials for the intentional wardrobe.</p>
+      </div>
+      <div class="footer-col">
+        <h4 class="" style="padding: 10px;">Collections</h4>
+        <ul>
+          <li><a href="#">Spring 2025</a></li>
+          <li><a href="#">Core Essentials</a></li>
+          <li><a href="#">Archive</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 class="" style="padding: 10px;">Company</h4>
+        <ul>
+          <li><a href="about.html">Our Story</a></li>
+          <li><a href="#">Sustainability</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        
+        
+        
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="year">2025</span> MONOCHROME. All rights reserved.</p>
+    </div>
   </div>
 </footer>
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+  
+  // Form submission
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const submitBtn = this.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+    
+    submitBtn.textContent = 'SENDING...';
+    submitBtn.disabled = true;
+    
+    // Simulate API call
+    setTimeout(() => {
+      submitBtn.textContent = 'MESSAGE SENT ✓';
+      submitBtn.style.backgroundColor = '#4CAF50';
+      
+      setTimeout(() => {
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+        submitBtn.style.backgroundColor = '';
+        this.reset();
+      }, 2000);
+    }, 1500);
+  });
 </script>
-        
+        <script>
+            // GLOBAL JS INJECTION
+            
+            
+            // INLINE JS EXECUTION
+            document.addEventListener('DOMContentLoaded', function() {
+                // Execute inline custom JS for each element
+                document.querySelectorAll('[data-custom-js]').forEach(function(el) {
+                    try {
+                        const code = el.getAttribute('data-custom-js');
+                        if (code) {
+                            const func = new Function('el', code);
+                            func(el);
+                        }
+                    } catch(err) {
+                        console.warn('Custom JS Error for element:', el.id, err);
+                    }
+                });
+            });
+        </script>
     
-        
     
-        
+
+        <script>
+            // GLOBAL JS INJECTION
+            
+            
+            // INLINE JS EXECUTION
+            document.addEventListener('DOMContentLoaded', function() {
+                // Execute inline custom JS for each element
+                document.querySelectorAll('[data-custom-js]').forEach(function(el) {
+                    try {
+                        const code = el.getAttribute('data-custom-js');
+                        if (code) {
+                            const func = new Function('el', code);
+                            func(el);
+                        }
+                    } catch(err) {
+                        console.warn('Custom JS Error for element:', el.id, err);
+                    }
+                });
+            });
+        </script>
     
-        
-    </body></html>
+    
+</body></html>
