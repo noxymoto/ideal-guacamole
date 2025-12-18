@@ -1,619 +1,456 @@
-<!DOCTYPE html><html><head><title>index.html</title><style>
-
-:root { --img-79qknn: url('https://images.unsplash.com/photo-1705909237050-7a7625b47fac?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); }
-:root { --img-i070qh: url('https://unsplash.com/photos/a-black-leather-bag-sitting-on-top-of-a-table-WiMyw8Y5ea0'); }/* Minimalist Clothing Theme - Square Layout */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-
-/* Color palette: Monochromatic minimalism */
-:root {
-  --bg: #ffffff;
-  --card-bg: #f9f9f9;
-  --accent: #000000;
-  --accent-hover: #333333;
-  --text: #1a1a1a;
-  --subtle: #777777;
-  --border: #e0e0e0;
-  --light-gray: #f5f5f5;
+<!DOCTYPE html><html><head><title>index.html</title><style>* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #f5f7fa;
+  color: #2d3748;
   line-height: 1.6;
-  font-weight: 300;
 }
 
-/* Typography with geometric feel */
-h1, h2, h3, h4 { 
-  font-weight: 300;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
 }
-h1 { 
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
-  text-transform: uppercase;
+
+header {
+  text-align: center;
+  margin-bottom: 3rem;
 }
-h2 { 
-  font-size: clamp(1.8rem, 4vw, 2.5rem);
+
+header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.5rem;
+}
+
+header p {
+  font-size: 1.1rem;
+  color: #718096;
+}
+
+.logo-display {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  padding: 3rem;
   margin-bottom: 2rem;
-}
-h3 { font-size: clamp(1.3rem, 3vw, 1.8rem); }
-
-/* Layout helpers */
-.wrapper { 
-  max-width: 1280px; 
-  margin: 0 auto; 
-  padding: 0 2rem; 
-}
-
-/* Buttons - Square style */
-.btn-square {
-  display: inline-block;
-  padding: 1rem 2rem;
-  background: var(--accent);
-  color: var(--bg);
-  font-weight: 400;
-  text-decoration: none;
-  border: none;
-  font-size: 0.9rem;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  transition: all 0.25s ease;
-  cursor: pointer;
-}
-.btn-square:hover { 
-  background: var(--accent-hover);
-  transform: translateY(-2px);
-}
-
-.btn-square-outline {
-  display: inline-block;
-  padding: 1rem 2rem;
-  background: transparent;
-  color: var(--text);
-  border: 1px solid var(--border);
-  font-weight: 400;
-  text-decoration: none;
-  font-size: 0.9rem;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  transition: all 0.25s ease;
-  cursor: pointer;
-  width: 100%;
-}
-.btn-square-outline:hover {
-  border-color: var(--accent);
-  background: var(--light-gray);
-}
-
-/* Header */
-.square-header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: var(--bg);
-  border-bottom: 1px solid var(--border);
-}
-.header-inner {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1.5rem 0;
-}
-.logo { 
-  font-size: 1.5rem; 
-  font-weight: 300;
-  letter-spacing: 3px;
-}
-nav ul { 
-  list-style: none; 
-  display: flex; 
-  gap: 2rem; 
-  align-items: center;
-}
-nav a {
-  color: var(--text);
-  text-decoration: none;
-  font-weight: 300;
-  font-size: 0.9rem;
-  letter-spacing: 1px;
-  transition: color 0.2s;
-}
-nav a:hover { color: var(--subtle); }
-.cart-icon {
-  position: relative;
-}
-.cart-count {
-  position: absolute;
-  top: -8px;
-  right: -8px;
-  background: var(--accent);
-  color: var(--bg);
-  border-radius: 50%;
-  width: 18px;
-  height: 18px;
-  font-size: 0.7rem;
-  display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  min-height: 300px;
 }
 
-/* Hero - Square Grid Layout */
-.hero-square {
-  padding: 6rem 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: center;
+#logo-container {
+  width: 250px;
+  height: 250px;
 }
-.hero-left {
-  padding-right: 2rem;
-}
-.square-heading {
-  margin-bottom: 1.5rem;
-  line-height: 1.1;
-}
-.hero-subtitle {
-  font-size: 1.1rem;
-  color: var(--subtle);
-  margin-bottom: 2.5rem;
-  max-width: 400px;
-}
-.square-image-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+
+.controls {
+  display: flex;
   gap: 1rem;
-}
-.square-img {
-  aspect-ratio: 1/1;
-  background-size: cover;
-  background-position: center;
-  background-color: var(--light-gray);
-}
-
-/* Products Grid - Square Cards */
-.products-square {
-  padding: 5rem 0;
-}
-.section-title {
-  text-align: center;
-  margin-bottom: 3rem;
-}
-.square-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-}
-.square-card {
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.square-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-}
-.square-img-container {
-  aspect-ratio: 1/1;
-  overflow: hidden;
-}
-.square-product-img {
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  transition: transform 0.5s ease;
-}
-.square-card:hover .square-product-img {
-  transform: scale(1.05);
-}
-.square-card-body {
-  padding: 1.5rem;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-.square-card-title {
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
-  font-weight: 400;
-}
-.square-card-price {
-  margin-bottom: 1.5rem;
-  font-size: 1.2rem;
-  font-weight: 300;
-}
-
-/* Features Grid */
-.features-square {
-  padding: 4rem 0;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-}
-.square-features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2rem;
-}
-.square-feature {
-  text-align: center;
-  padding: 2rem;
-}
-.feature-icon {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-.square-feature h3 {
-  margin-bottom: 0.5rem;
-  font-weight: 400;
-}
-.square-feature p {
-  color: var(--subtle);
-  font-size: 0.9rem;
-}
-
-/* Footer */
-.square-footer {
-  padding: 4rem 0 2rem;
-  background: var(--light-gray);
-}
-.footer-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 3rem;
-  margin-bottom: 3rem;
-}
-.footer-col ul {
-  list-style: none;
-}
-.footer-col li {
-  margin-bottom: 0.5rem;
-}
-.footer-col a {
-  color: var(--subtle);
-  text-decoration: none;
-  font-size: 0.9rem;
-  transition: color 0.2s;
-}
-.footer-col a:hover {
-  color: var(--text);
-}
-.footer-input {
-  width: 100%;
-  padding: 0.75rem;
-  border: 1px solid var(--border);
-  background: var(--bg);
-  margin-bottom: 1rem;
-  font-family: inherit;
-}
-.footer-bottom {
-  padding-top: 2rem;
-  border-top: 1px solid var(--border);
-  text-align: center;
-  color: var(--subtle);
-  font-size: 0.9rem;
-}
-
-/* Cart Sidebar */
-.cart-sidebar {
-  position: fixed;
-  top: 0;
-  right: -400px;
-  width: 350px;
-  height: 100vh;
-  background: var(--bg);
-  border-left: 1px solid var(--border);
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  transition: right 0.3s ease;
-  z-index: 1000;
-}
-.cart-sidebar.active {
-  right: 0;
-}
-.cart-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: center;
   margin-bottom: 2rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--border);
 }
-.close-cart {
-  background: none;
+
+.btn-primary, .btn-secondary {
+  padding: 0.75rem 2rem;
   border: none;
-  font-size: 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
-  color: var(--subtle);
+  transition: all 0.3s ease;
 }
-.cart-items {
-  flex: 1;
-  overflow-y: auto;
+
+.btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
 }
-.cart-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 0;
-  border-bottom: 1px solid var(--border);
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
 }
-.cart-item-info h4 {
-  font-size: 0.9rem;
-  font-weight: 400;
-  margin-bottom: 0.25rem;
+
+.btn-secondary {
+  background: white;
+  color: #667eea;
+  border: 2px solid #667eea;
 }
-.cart-item-info p {
-  color: var(--subtle);
-  font-size: 0.9rem;
+
+.btn-secondary:hover {
+  background: #667eea;
+  color: white;
 }
-.remove-item {
-  background: none;
-  border: none;
-  color: var(--subtle);
-  cursor: pointer;
+
+.style-selector {
+  text-align: center;
 }
-.cart-total {
-  padding-top: 1rem;
-  border-top: 1px solid var(--border);
-}
-.cart-total p {
-  font-size: 1.2rem;
+
+.style-selector h3 {
   margin-bottom: 1rem;
+  color: #4a5568;
 }
 
-/* Mobile */
+.style-buttons {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.style-btn {
+  padding: 0.5rem 1rem;
+  border: 2px solid #e2e8f0;
+  background: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.style-btn.active {
+  background: #667eea;
+  color: white;
+  border-color: #667eea;
+}
+
+.style-btn:hover:not(.active) {
+  border-color: #667eea;
+  color: #667eea;
+}
+
 @media (max-width: 768px) {
-  .hero-square {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    padding: 3rem 0;
+  header h1 {
+    font-size: 2rem;
   }
-  .header-inner {
-    flex-wrap: wrap;
-  }
-  nav ul {
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-  .square-grid {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  }
-  .cart-sidebar {
-    width: 100%;
-    right: -100%;
-  }
-}</style></head><body><header class="square-header">
-  <div class="wrapper header-inner">
-    <div class="logo">MONOCHROME</div>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="shop.html">Collection</a></li>
-        <li><a href="about.html">Philosophy</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="#" class="cart-icon">🛒 <span class="cart-count">0</span></a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
-
-<section class="wrapper hero-square">
-  <div class="hero-left">
-    <h1 class="square-heading">ESSENTIALS<br>REDEFINED</h1>
-    <p class="hero-subtitle">Timeless minimalism in every thread. Pure form, pure function.</p>
-    <a href="shop.html" class="btn btn-square">EXPLORE COLLECTION</a>
-  </div>
-  <div class="hero-right">
-    <div class="square-image-grid">
-      <div class="square-img" style="background-image: url('https://images.unsplash.com/photo-1490114538077-0a7f8cb49891?w=800&amp;auto=format&amp;fit=crop&amp;q=60');"></div>
-      <div class="square-img" style="background-image: url('https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w-800&amp;auto=format&amp;fit=crop&amp;q=60');"></div>
-      <div class="square-img" style="background-image: url('https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w-800&amp;auto=format&amp;fit=crop&amp;q=60');"></div>
-      <div class="square-img" style="background-image: var(--img-79qknn); background-position: initial; background-size: cover; background-repeat: no-repeat; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: initial;"></div>
-    </div>
-  </div>
-</section>
-
-<section class="wrapper products-square">
-  <h2 class="section-title">CURATED ESSENTIALS</h2>
-  <div class="square-grid">
-    <article class="square-card">
-      <div class="square-img-container">
-        <div class="square-product-img" style="background-image: url('https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?w=800&amp;auto=format&amp;fit=crop&amp;q=60');"></div>
-      </div>
-      <div class="square-card-body">
-        <h3 class="square-card-title">Oversized Wool Blazer</h3>
-        <p class="square-card-price">$289</p>
-        <button class="btn-square-outline" data-product="1">ADD TO CART</button>
-      </div>
-    </article>
-    <article class="square-card">
-      <div class="square-img-container">
-        <div class="square-product-img" style="background-image: url('https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=800&amp;auto=format&amp;fit=crop&amp;q=60');"></div>
-      </div>
-      <div class="square-card-body">
-        <h3 class="square-card-title">Straight-Leg Trousers</h3>
-        <p class="square-card-price">$159</p>
-        <button class="btn-square-outline" data-product="2">ADD TO CART</button>
-      </div>
-    </article>
-    <article class="square-card">
-      <div class="square-img-container">
-        <div class="square-product-img" style="background-image: url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&amp;auto=format&amp;fit=crop&amp;q=60');"></div>
-      </div>
-      <div class="square-card-body">
-        <h3 class="square-card-title">Cashmere Crewneck</h3>
-        <p class="square-card-price">$199</p>
-        <button class="btn-square-outline" data-product="3">ADD TO CART</button>
-      </div>
-    </article>
-    <article class="square-card">
-      <div class="square-img-container">
-        <div class="square-product-img" style="background-image: url('https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=800&amp;auto=format&amp;fit=crop&amp;q=60');"></div>
-      </div>
-      <div class="square-card-body">
-        <h3 class="square-card-title">Silk Slip Dress</h3>
-        <p class="square-card-price">$239</p>
-        <button class="btn-square-outline" data-product="4">ADD TO CART</button>
-      </div>
-    </article>
-  </div>
-</section>
-
-<section class="wrapper features-square">
-  <div class="square-features-grid">
-    <div class="square-feature">
-      
-      <h3>Tailored Precision</h3>
-      <p>Each piece cut with architectural accuracy</p>
-    </div>
-    <div class="square-feature">
-      
-      <h3>Natural Fibers</h3>
-      <p class="">Organic cotton, wool, linen &amp; silk</p>
-    </div>
-    <div class="square-feature">
-      
-      <h3 class="">Ethical Production</h3>
-      <p>Fair wages &amp; sustainable practices</p>
-    </div>
-    <div class="square-feature">
-      
-      <h3>Carbon Neutral</h3>
-      <p>All shipping offsets 100%</p>
-    </div>
-  </div>
-</section>
-
-<footer class="square-footer">
-  <div class="wrapper">
-    <div class="footer-grid">
-      <div class="footer-col">
-        <div class="logo">MONOCHROME</div>
-        <p>Minimalist essentials for the intentional wardrobe.</p>
-      </div>
-      <div class="footer-col">
-        <h4 class="" style="padding: 10px;">Collections</h4>
-        <ul>
-          <li><a href="#">Spring 2025</a></li>
-          <li><a href="#">Core Essentials</a></li>
-          <li><a href="#">Archive</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4 class="" style="padding: 10px;">Company</h4>
-        <ul>
-          <li><a href="about.html">Our Story</a></li>
-          <li><a href="#">Sustainability</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4 class="" style="padding: 10px;">Newsletter</h4>
-        <input type="email" placeholder="Your email" class="footer-input">
-        <button class="btn-square-outline">Subscribe</button>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© <span id="year">2025</span> MONOCHROME. All rights reserved.</p>
-    </div>
-  </div>
-</footer>
-
-<div class="cart-sidebar">
-  <div class="cart-header">
-    <h3>Your Cart</h3>
-    <button class="close-cart">✕</button>
-  </div>
-  <div class="cart-items"></div>
-  <div class="cart-total">
-    <p>Total: $<span class="total-price">0</span></p>
-    <button class="btn-square">CHECKOUT</button>
-  </div>
-</div>
-
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
   
-  // Cart functionality
-  let cart = [];
-  const cartSidebar = document.querySelector('.cart-sidebar');
-  const cartItems = document.querySelector('.cart-items');
-  const cartCount = document.querySelector('.cart-count');
-  const totalPrice = document.querySelector('.total-price');
-  
-  document.querySelectorAll('.cart-icon').forEach(icon => {
-    icon.addEventListener('click', (e) => {
-      e.preventDefault();
-      cartSidebar.classList.add('active');
-    });
-  });
-  
-  document.querySelector('.close-cart').addEventListener('click', () => {
-    cartSidebar.classList.remove('active');
-  });
-  
-  document.querySelectorAll('.btn-square-outline').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      const productId = e.target.getAttribute('data-product');
-      const productName = e.target.closest('.square-card').querySelector('.square-card-title').textContent;
-      const priceText = e.target.closest('.square-card').querySelector('.square-card-price').textContent;
-      const price = parseInt(priceText.replace('$', ''));
-      
-      cart.push({ id: productId, name: productName, price: price });
-      updateCart();
-      
-      // Visual feedback
-      e.target.textContent = 'ADDED ✓';
-      e.target.style.backgroundColor = '#000';
-      e.target.style.color = '#fff';
-      setTimeout(() => {
-        e.target.textContent = 'ADD TO CART';
-        e.target.style.backgroundColor = '';
-        e.target.style.color = '';
-      }, 1500);
-    });
-  });
-  
-  function updateCart() {
-    cartCount.textContent = cart.length;
-    let total = cart.reduce((sum, item) => sum + item.price, 0);
-    totalPrice.textContent = total;
-    
-    cartItems.innerHTML = '';
-    cart.forEach(item => {
-      const itemEl = document.createElement('div');
-      itemEl.className = 'cart-item';
-      itemEl.innerHTML = `
-        <div class="cart-item-info">
-          <h4>${item.name}</h4>
-          <p>$${item.price}</p>
-        </div>
-        <button class="remove-item" data-id="${item.id}">✕</button>
-      `;
-      cartItems.appendChild(itemEl);
-    });
-    
-    document.querySelectorAll('.remove-item').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        const id = e.target.getAttribute('data-id');
-        cart = cart.filter(item => item.id !== id);
-        updateCart();
-      });
-    });
+  .logo-display {
+    padding: 2rem;
+    min-height: 250px;
   }
-</script>
-        <script>
+  
+  #logo-container {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .controls {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .btn-primary, .btn-secondary {
+    width: 200px;
+  }
+}
+
+
+/* AI Generated Theme */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #f5f7fa;
+  color: #2d3748;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.5rem;
+}
+
+header p {
+  font-size: 1.1rem;
+  color: #718096;
+}
+
+.logo-display {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  padding: 3rem;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+}
+
+#logo-container {
+  width: 250px;
+  height: 250px;
+}
+
+.controls {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.btn-primary, .btn-secondary {
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-secondary {
+  background: white;
+  color: #667eea;
+  border: 2px solid #667eea;
+}
+
+.btn-secondary:hover {
+  background: #667eea;
+  color: white;
+}
+
+.style-selector {
+  text-align: center;
+}
+
+.style-selector h3 {
+  margin-bottom: 1rem;
+  color: #4a5568;
+}
+
+.style-buttons {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.style-btn {
+  padding: 0.5rem 1rem;
+  border: 2px solid #e2e8f0;
+  background: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.style-btn.active {
+  background: #667eea;
+  color: white;
+  border-color: #667eea;
+}
+
+.style-btn:hover:not(.active) {
+  border-color: #667eea;
+  color: #667eea;
+}
+
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2rem;
+  }
+  
+  .logo-display {
+    padding: 2rem;
+    min-height: 250px;
+  }
+  
+  #logo-container {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .controls {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .btn-primary, .btn-secondary {
+    width: 200px;
+  }
+}</style></head><body>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Logo Generator</title>
+
+
+    <div class="container">
+        <header>
+            <h1>Random Logo Generator</h1>
+            <p>Click generate to create unique SVG logos</p>
+        </header>
+        
+        <main>
+            <div class="logo-display">
+                <div id="logo-container"><svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <polygon points="100,40 160,140 40,140" fill="none" stroke="#f7906f" stroke-width="6"></polygon>
+                    <polygon points="100,60 140,130 60,130" fill="#301082"></polygon>
+                </svg></div>
+            </div>
+            
+            <div class="controls">
+                <button id="generate-btn" class="btn-primary">Generate Logo</button>
+                <button id="download-btn" class="btn-secondary">Download SVG</button>
+            </div>
+            
+            <div class="style-selector">
+                <h3>Logo Styles</h3>
+                <div class="style-buttons">
+                    <button class="style-btn active" data-style="all">All Styles</button>
+                    <button class="style-btn" data-style="geometric">Geometric</button>
+                    <button class="style-btn" data-style="organic">Organic</button>
+                    <button class="style-btn" data-style="minimal">Minimal</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Logo generation functions
+        const logoStyles = {
+            geometric: [
+                // Diamond
+                () => `<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="50" y="50" width="100" height="100" fill="#${Math.floor(Math.random()*16777215).toString(16)}" transform="rotate(45 100 100)" rx="10"/>
+                    <rect x="70" y="70" width="60" height="60" fill="#${Math.floor(Math.random()*16777215).toString(16)}" transform="rotate(45 100 100)" rx="5"/>
+                </svg>`,
+                // Hexagon
+                () => `<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <polygon points="100,30 170,70 170,130 100,170 30,130 30,70" fill="#${Math.floor(Math.random()*16777215).toString(16)}"/>
+                    <polygon points="100,50 150,80 150,120 100,150 50,120 50,80" fill="#${Math.floor(Math.random()*16777215).toString(16)}"/>
+                </svg>`
+            ],
+            organic: [
+                // Blob
+                () => `<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50,100 Q30,50 80,60 T150,50 Q180,80 160,120 T140,160 Q100,180 60,160 Z" fill="#${Math.floor(Math.random()*16777215).toString(16)}"/>
+                    <circle cx="100" cy="100" r="30" fill="#${Math.floor(Math.random()*16777215).toString(16)}"/>
+                </svg>`,
+                // Leaves
+                () => `<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M100,50 Q120,80 100,120 Q80,80 100,50" fill="#${Math.floor(Math.random()*16777215).toString(16)}"/>
+                    <path d="M100,80 Q130,90 120,120 Q90,110 100,80" fill="#${Math.floor(Math.random()*16777215).toString(16)}"/>
+                    <path d="M100,80 Q70,90 80,120 Q110,110 100,80" fill="#${Math.floor(Math.random()*16777215).toString(16)}"/>
+                </svg>`
+            ],
+            minimal: [
+                // Circle lines
+                () => `<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="100" cy="100" r="60" fill="none" stroke="#${Math.floor(Math.random()*16777215).toString(16)}" stroke-width="8"/>
+                    <circle cx="100" cy="100" r="30" fill="none" stroke="#${Math.floor(Math.random()*16777215).toString(16)}" stroke-width="4"/>
+                    <circle cx="100" cy="100" r="10" fill="#${Math.floor(Math.random()*16777215).toString(16)}"/>
+                </svg>`,
+                // Triangle
+                () => `<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <polygon points="100,40 160,140 40,140" fill="none" stroke="#${Math.floor(Math.random()*16777215).toString(16)}" stroke-width="6"/>
+                    <polygon points="100,60 140,130 60,130" fill="#${Math.floor(Math.random()*16777215).toString(16)}"/>
+                </svg>`
+            ]
+        };
+
+        let currentStyle = 'all';
+
+        function generateLogo() {
+            const container = document.getElementById('logo-container');
+            let logoOptions = [];
+            
+            if (currentStyle === 'all') {
+                logoOptions = [...logoStyles.geometric, ...logoStyles.organic, ...logoStyles.minimal];
+            } else {
+                logoOptions = logoStyles[currentStyle];
+            }
+            
+            const randomLogo = logoOptions[Math.floor(Math.random() * logoOptions.length)];
+            container.innerHTML = randomLogo();
+        }
+
+        function downloadSVG() {
+            const svg = document.querySelector('#logo-container svg');
+            if (!svg) return;
+            
+            const svgData = new XMLSerializer().serializeToString(svg);
+            const blob = new Blob([svgData], { type: 'image/svg+xml' });
+            const url = URL.createObjectURL(blob);
+            
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `logo-${Date.now()}.svg`;
+            link.click();
+            
+            URL.revokeObjectURL(url);
+        }
+
+        // Event listeners
+        document.getElementById('generate-btn').addEventListener('click', generateLogo);
+        document.getElementById('download-btn').addEventListener('click', downloadSVG);
+
+        document.querySelectorAll('.style-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.style-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                currentStyle = e.target.dataset.style;
+            });
+        });
+
+        // Generate initial logo
+        generateLogo();
+    </script>
+
+
+       <script>
             // GLOBAL JS INJECTION
+            try {
+                
+            } catch(e) { console.error("Global JS Error:", e); }
             
+            // --- INLINE JS EXECUTION (The Fix) ---
+            // If previewMode is false (Edit Mode), we inject '/*' to COMMENT OUT the runner.
+            // If previewMode is true (Live Mode), we inject '' so the code runs.
+            /* 
             
-            // INLINE JS EXECUTION
             document.addEventListener('DOMContentLoaded', function() {
-                // Execute inline custom JS for each element
                 document.querySelectorAll('[data-custom-js]').forEach(function(el) {
                     try {
                         const code = el.getAttribute('data-custom-js');
@@ -626,17 +463,26 @@ nav a:hover { color: var(--subtle); }
                     }
                 });
             });
+
+            // Close the comment block if in Edit Mode
+            */ console.log("Inline Scripts Paused (Edit Mode)"); 
+            // -------------------------------------
         </script>
     
     
 
-        <script>
+       <script>
             // GLOBAL JS INJECTION
+            try {
+                
+            } catch(e) { console.error("Global JS Error:", e); }
             
+            // --- INLINE JS EXECUTION (The Fix) ---
+            // If previewMode is false (Edit Mode), we inject '/*' to COMMENT OUT the runner.
+            // If previewMode is true (Live Mode), we inject '' so the code runs.
+            /* 
             
-            // INLINE JS EXECUTION
             document.addEventListener('DOMContentLoaded', function() {
-                // Execute inline custom JS for each element
                 document.querySelectorAll('[data-custom-js]').forEach(function(el) {
                     try {
                         const code = el.getAttribute('data-custom-js');
@@ -649,75 +495,10 @@ nav a:hover { color: var(--subtle); }
                     }
                 });
             });
-        </script>
-    
-    
 
-        <script>
-            // GLOBAL JS INJECTION
-            
-            
-            // INLINE JS EXECUTION
-            document.addEventListener('DOMContentLoaded', function() {
-                // Execute inline custom JS for each element
-                document.querySelectorAll('[data-custom-js]').forEach(function(el) {
-                    try {
-                        const code = el.getAttribute('data-custom-js');
-                        if (code) {
-                            const func = new Function('el', code);
-                            func(el);
-                        }
-                    } catch(err) {
-                        console.warn('Custom JS Error for element:', el.id, err);
-                    }
-                });
-            });
-        </script>
-    
-    
-
-        <script>
-            // GLOBAL JS INJECTION
-            
-            
-            // INLINE JS EXECUTION
-            document.addEventListener('DOMContentLoaded', function() {
-                // Execute inline custom JS for each element
-                document.querySelectorAll('[data-custom-js]').forEach(function(el) {
-                    try {
-                        const code = el.getAttribute('data-custom-js');
-                        if (code) {
-                            const func = new Function('el', code);
-                            func(el);
-                        }
-                    } catch(err) {
-                        console.warn('Custom JS Error for element:', el.id, err);
-                    }
-                });
-            });
-        </script>
-    
-    
-
-        <script>
-            // GLOBAL JS INJECTION
-            
-            
-            // INLINE JS EXECUTION
-            document.addEventListener('DOMContentLoaded', function() {
-                // Execute inline custom JS for each element
-                document.querySelectorAll('[data-custom-js]').forEach(function(el) {
-                    try {
-                        const code = el.getAttribute('data-custom-js');
-                        if (code) {
-                            const func = new Function('el', code);
-                            func(el);
-                        }
-                    } catch(err) {
-                        console.warn('Custom JS Error for element:', el.id, err);
-                    }
-                });
-            });
+            // Close the comment block if in Edit Mode
+            */ console.log("Inline Scripts Paused (Edit Mode)"); 
+            // -------------------------------------
         </script>
     
     
