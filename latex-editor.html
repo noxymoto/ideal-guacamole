@@ -1,0 +1,340 @@
+<!DOCTYPE html><html><head><title>latex-editor.html</title><style>
+</style></head><body><div class="editor-container">
+  <div class="editor-header">
+    <h1>LaTeX Editor</h1>
+    <button id="renderBtn" class="btn">Render</button>
+    <button id="clearBtn" class="btn btn-secondary">Clear</button>
+  </div>
+  
+  <div class="editor-body">
+    <div class="editor-pane">
+      <div class="pane-header">LaTeX Source</div>
+      <textarea id="latexInput" placeholder="Enter your LaTeX here...
+        
+Example:
+\documentclass{article}
+\begin{document}
+Hello world! Here's a formula:
+$$E = mc^2$$
+\end{document}"></textarea>
+    </div>
+    
+    <div class="preview-pane">
+      <div class="pane-header">Live Preview</div>
+      <div id="previewContent"><p></p><p>
+</p><h2>Welcome to LaTeX Editor</h2><p></p><p>This is a simple LaTeX editor with live preview.</p><p></p><h3>Math Example</h3><p></p><p>Here's the famous equation:
+<mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" display="true" tabindex="0" ctxtmenu_counter="2" style="font-size: 113.1%; position: relative;"><mjx-math display="true" class="MJX-TEX" aria-hidden="true" style="margin-left: 0px; margin-right: 0px;"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D438 TEX-I"></mjx-c></mjx-mi><mjx-mo class="mjx-n" space="4"><mjx-c class="mjx-c3D"></mjx-c></mjx-mo><mjx-mi class="mjx-i" space="4"><mjx-c class="mjx-c1D45A TEX-I"></mjx-c></mjx-mi><mjx-msup><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D450 TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: 0.413em;"><mjx-mn class="mjx-n" size="s"><mjx-c class="mjx-c32"></mjx-c></mjx-mn></mjx-script></mjx-msup></mjx-math><mjx-assistive-mml unselectable="on" display="block"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mi>E</mi><mo>=</mo><mi>m</mi><msup><mi>c</mi><mn>2</mn></msup></math></mjx-assistive-mml></mjx-container></p><p>And some inline math: <mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="3" style="font-size: 113.1%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-msup><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D44E TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: 0.363em;"><mjx-mn class="mjx-n" size="s"><mjx-c class="mjx-c32"></mjx-c></mjx-mn></mjx-script></mjx-msup><mjx-mo class="mjx-n" space="3"><mjx-c class="mjx-c2B"></mjx-c></mjx-mo><mjx-msup space="3"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D44F TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: 0.363em;"><mjx-mn class="mjx-n" size="s"><mjx-c class="mjx-c32"></mjx-c></mjx-mn></mjx-script></mjx-msup><mjx-mo class="mjx-n" space="4"><mjx-c class="mjx-c3D"></mjx-c></mjx-mo><mjx-msup space="4"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D450 TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: 0.363em;"><mjx-mn class="mjx-n" size="s"><mjx-c class="mjx-c32"></mjx-c></mjx-mn></mjx-script></mjx-msup></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup><mo>=</mo><msup><mi>c</mi><mn>2</mn></msup></math></mjx-assistive-mml></mjx-container></p><p></p><h3>Lists</h3><p></p><p></p><ul><li>First item</li><li>Second item</li><li>Third item</li></ul><p></p><p></p></div>
+    </div>
+  </div>
+</div>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #f5f5f5;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.editor-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: white;
+}
+
+.editor-header {
+  background: #2c3e50;
+  color: white;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.editor-header h1 {
+  font-size: 1.5rem;
+  flex: 1;
+}
+
+.btn {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+
+.btn:hover {
+  background: #2980b9;
+}
+
+.btn-secondary {
+  background: #95a5a6;
+}
+
+.btn-secondary:hover {
+  background: #7f8c8d;
+}
+
+.editor-body {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+.editor-pane, .preview-pane {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #e0e0e0;
+}
+
+.pane-header {
+  background: #ecf0f1;
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  border-bottom: 1px solid #bdc3c7;
+}
+
+#latexInput {
+  flex: 1;
+  border: none;
+  padding: 1rem;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  resize: none;
+  outline: none;
+  background: #fafafa;
+}
+
+#previewContent {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+  background: white;
+}
+
+/* MathJax styling */
+#previewContent .MathJax {
+  outline: none;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .editor-body {
+    flex-direction: column;
+  }
+  
+  .editor-pane {
+    border-right: none;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  #latexInput {
+    min-height: 200px;
+  }
+}
+</style>
+
+<script>
+// Configure MathJax
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    processEscapes: true,
+    processEnvironments: true
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+
+// Load MathJax
+const script = document.createElement('script');
+script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+document.head.appendChild(script);
+
+// Editor functionality
+const latexInput = document.getElementById('latexInput');
+const previewContent = document.getElementById('previewContent');
+const renderBtn = document.getElementById('renderBtn');
+const clearBtn = document.getElementById('clearBtn');
+
+function renderLatex() {
+  const latex = latexInput.value;
+  
+  // Simple LaTeX to HTML conversion
+  let html = latex
+    // Convert sections
+    .replace(/\\section\{(.*?)\}/g, '<h2>$1</h2>')
+    .replace(/\\subsection\{(.*?)\}/g, '<h3>$1</h3>')
+    // Convert paragraphs
+    .replace(/\\paragraph\{(.*?)\}/g, '<p><strong>$1</strong></p>')
+    // Convert emphasis
+    .replace(/\\emph\{(.*?)\}/g, '<em>$1</em>')
+    .replace(/\\textbf\{(.*?)\}/g, '<strong>$1</strong>')
+    // Convert itemize
+    .replace(/\\begin\{itemize\}([\s\S]*?)\\end\{itemize\}/g, (match, content) => {
+      const items = content.trim().split('\\item').filter(item => item.trim());
+      return '<ul>' + items.map(item => `<li>${item.trim()}</li>`).join('') + '</ul>';
+    })
+    // Convert enumerate
+    .replace(/\\begin\{enumerate\}([\s\S]*?)\\end\{enumerate\}/g, (match, content) => {
+      const items = content.trim().split('\\item').filter(item => item.trim());
+      return '<ol>' + items.map(item => `<li>${item.trim()}</li>`).join('') + '</ol>';
+    })
+    // Remove document class and environment
+    .replace(/\\documentclass\{.*?\}/g, '')
+    .replace(/\\begin\{document\}/g, '')
+    .replace(/\\end\{document\}/g, '')
+    // Handle line breaks
+    .replace(/\\\\/g, '<br>')
+    // Handle paragraphs
+    .replace(/\n\n/g, '</p><p>')
+    .replace(/^\s*|\s*$/g, '');
+  
+  if (!html.startsWith('<')) {
+    html = '<p>' + html + '</p>';
+  }
+  
+  previewContent.innerHTML = html;
+  
+  // Trigger MathJax to process the math
+  if (window.MathJax && window.MathJax.typesetPromise) {
+    window.MathJax.typesetPromise([previewContent]).catch((e) => console.error(e));
+  }
+}
+
+function clearEditor() {
+  latexInput.value = '';
+  previewContent.innerHTML = '';
+}
+
+// Event listeners
+renderBtn.addEventListener('click', renderLatex);
+clearBtn.addEventListener('click', clearEditor);
+latexInput.addEventListener('input', debounce(renderLatex, 500));
+
+// Debounce function for live updates
+function debounce(func, wait) {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+}
+
+// Initial render with example
+setTimeout(() => {
+  if (!latexInput.value.trim()) {
+    latexInput.value = `\\documentclass{article}
+\\begin{document}
+
+\\section{Welcome to LaTeX Editor}
+
+This is a simple LaTeX editor with live preview.
+
+\\subsection{Math Example}
+
+Here's the famous equation:
+$$E = mc^2$$
+
+And some inline math: $a^2 + b^2 = c^2$
+
+\\subsection{Lists}
+
+\\begin{itemize}
+\\item First item
+\\item Second item
+\\item Third item
+\\end{itemize}
+
+\\end{document}`;
+    renderLatex();
+  }
+}, 100);
+</script>
+       
+    
+    
+
+       <script>
+            // GLOBAL JS INJECTION
+            try {
+                
+            } catch(e) { console.error("Global JS Error:", e); }
+            
+            // --- INLINE JS EXECUTION (The Fix) ---
+            // If previewMode is false (Edit Mode), we inject '/*' to COMMENT OUT the runner.
+            // If previewMode is true (Live Mode), we inject '' so the code runs.
+            /* 
+            
+            document.addEventListener('DOMContentLoaded', function() {
+                document.querySelectorAll('[data-custom-js]').forEach(function(el) {
+                    try {
+                        const code = el.getAttribute('data-custom-js');
+                        if (code) {
+                            const func = new Function('el', code);
+                            func(el);
+                        }
+                    } catch(err) {
+                        console.warn('Custom JS Error for element:', el.id, err);
+                    }
+                });
+            });
+
+            // Close the comment block if in Edit Mode
+            */ console.log("Inline Scripts Paused (Edit Mode)"); 
+            // -------------------------------------
+        </script>
+    
+    
+
+       <script>
+            // GLOBAL JS INJECTION
+            try {
+                
+            } catch(e) { console.error("Global JS Error:", e); }
+            
+            // --- INLINE JS EXECUTION (The Fix) ---
+            // If previewMode is false (Edit Mode), we inject '/*' to COMMENT OUT the runner.
+            // If previewMode is true (Live Mode), we inject '' so the code runs.
+            /* 
+            
+            document.addEventListener('DOMContentLoaded', function() {
+                document.querySelectorAll('[data-custom-js]').forEach(function(el) {
+                    try {
+                        const code = el.getAttribute('data-custom-js');
+                        if (code) {
+                            const func = new Function('el', code);
+                            func(el);
+                        }
+                    } catch(err) {
+                        console.warn('Custom JS Error for element:', el.id, err);
+                    }
+                });
+            });
+
+            // Close the comment block if in Edit Mode
+            */ console.log("Inline Scripts Paused (Edit Mode)"); 
+            // -------------------------------------
+        </script>
+    
+    
+</body></html>
